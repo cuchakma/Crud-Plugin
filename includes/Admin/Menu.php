@@ -12,11 +12,19 @@ class Menu{
     }
 
     public function admin_menu() {
-        add_menu_page( __( 'CRUD PLUGIN', 'crud' ), __( 'CURD', 'crud' ), 'manage_options', 'crud', array( $this, 'plugin_page' ), 'dashicons-welcome-learn-more' );
-
+        $parent_slug = 'crud';
+        $capability  = 'manage_options';
+        add_menu_page( __( 'CRUD PLUGIN', 'crud' ), __( 'CURD', 'crud' ), $capability, $parent_slug, array( $this, 'addressbook_page' ), 'dashicons-welcome-learn-more' );
+        add_submenu_page( $parent_slug, __( 'Address Book', 'crud' ), __( 'Address Book', 'crud' ),  $capability, $parent_slug, array( $this, 'addressbook_page' ) );
+        add_submenu_page( $parent_slug, __( 'Settings', 'crud' ), __( 'Settings', 'crud' ),  $capability, 'cc-crud-settings', array( $this, 'settings_page' ) );
     }
 
-    public function plugin_page() {
-        echo 'Hello World';
+    public function addressbook_page() {
+        $addressbook = new Addressbook();
+        $addressbook->plugin_page();
+    }
+
+    public function settings_page() {
+        echo "Hi from settings Page";
     }
 }
