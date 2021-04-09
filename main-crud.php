@@ -45,7 +45,7 @@ final class CC_CRUD{
     private function __construct() {
         $this->define_constants();
         register_activation_hook( __FILE__,  array( $this, 'activate' ) );
-        add_action( 'plugins_loaded', array($this, 'init_plugin') );
+        add_action( 'plugins_loaded', array( $this, 'init_plugin' ) );
     }
 
     /**
@@ -92,14 +92,8 @@ final class CC_CRUD{
      * @return void
      */
     public function activate() {
-
-        $installed = get_option( 'cc_crud_installed' );
-    
-        if( !$installed ) {
-            update_option( 'cc_crud_installed', time() );
-        }
-
-        update_option( 'cc_crud_version', CC_CRUD_VERSION );
+        $installer = new CC\CRUD\Installer();
+        $installer->run();
     }
 }
 
