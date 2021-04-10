@@ -6,7 +6,7 @@
  * @param array $args
  * @return int|WP_Error 
  */
-function cc_insert_address( $args = [] ) {
+function cc_insert_address( $args = array() ) {
     global $wpdb;
 
 
@@ -41,4 +41,45 @@ function cc_insert_address( $args = [] ) {
     }
 
     return $wpdb->insert_id;
+}
+
+/**
+ * Fetches Addresses From Database
+ *
+ * @param array $args
+ * 
+ * @return array
+ */
+function cc_fetch_address( $args = [] ) {
+
+    global $wpdb;
+
+    $defaults = array(
+        'number'  => 20,
+        'offset'  => 0,
+        'orderby' =>'id',
+        'order'   =>'ASC'
+    );
+
+    $args = wp_parse_args( $args, $defaults );
+
+    $items = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT * FROM {$wpdb->prefix}cc_addresses ORDER BY {$args['orderby']} {$args['order']} LIMIT %d, %d", $args['offset'], $args['number']
+    ));
+
+    return $items;
+}
+
+
+/**
+ * Count Total Address From Database
+ *
+ * @return int
+ */
+function cc_fetch_address_count() {
+
+    global $wpdb;
+
+    return (int) $wpdb->get_var( "SELECT count(id) FROM {$wpdb->prefix}cc_addresses");
 }

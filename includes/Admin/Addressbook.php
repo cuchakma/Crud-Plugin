@@ -6,7 +6,7 @@ namespace CC\CRUD\Admin;
  * Addressbook class handler
  */
 class Addressbook{
-
+    
     public $errors = [];
 
     public function plugin_page() {

@@ -17,7 +17,7 @@ class Menu{
     public function admin_menu() {
         $parent_slug = 'crud';
         $capability  = 'manage_options';
-        add_menu_page( __( 'CRUD PLUGIN', 'crud' ), __( 'CURD', 'crud' ), $capability, $parent_slug, array( $this->addressbook, 'plugin_page' ), 'dashicons-welcome-learn-more' );
+        add_menu_page( __( 'CRUD PLUGIN', 'crud' ), __( 'CRUD', 'crud' ), $capability, $parent_slug, array( $this->addressbook, 'plugin_page' ), 'dashicons-welcome-learn-more' );
         add_submenu_page( $parent_slug, __( 'Address Book', 'crud' ), __( 'Address Book', 'crud' ),  $capability, $parent_slug, array( $this->addressbook, 'plugin_page' ) );
         add_submenu_page( $parent_slug, __( 'Settings', 'crud' ), __( 'Settings', 'crud' ),  $capability, 'cc-crud-settings', array( $this, 'settings_page' ) );
     }
