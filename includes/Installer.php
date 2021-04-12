@@ -5,44 +5,44 @@ namespace CC\CRUD;
 /**
  * Installer class
  */
-class Installer{
-    
-    /**
-     * Run the installer
-     *
-     * @return void
-     */
-    public function run() {
-        $this->add_version();
-        $this->create_tables();
-    }
+class Installer {
 
-    /**
-     * 
-     *
-     * @return void
-     */
-    public function add_version() {
+	/**
+	 * Run the installer
+	 *
+	 * @return void
+	 */
+	public function run() {
+		$this->add_version();
+		$this->create_tables();
+	}
 
-        $installed = get_option( 'cc_crud_installed' );
-    
-        if( !$installed ) {
-            update_option( 'cc_crud_installed', time() );
-        }
+	/**
+	 *
+	 *
+	 * @return void
+	 */
+	public function add_version() {
 
-        update_option( 'cc_crud_version', CC_CRUD_VERSION );
-    }
+		$installed = get_option( 'cc_crud_installed' );
 
-    /**
-     * create the database table for the plugin
-     *
-     * @return void
-     */
-    public function create_tables() {
-        global $wpdb;
+		if ( ! $installed ) {
+			update_option( 'cc_crud_installed', time() );
+		}
 
-        $charset_collate = $wpdb->get_charset_collate();
-        $schema = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}cc_addresses` (
+		update_option( 'cc_crud_version', CC_CRUD_VERSION );
+	}
+
+	/**
+	 * create the database table for the plugin
+	 *
+	 * @return void
+	 */
+	public function create_tables() {
+		global $wpdb;
+
+		$charset_collate = $wpdb->get_charset_collate();
+		$schema          = "CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}cc_addresses` (
             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
             `name` varchar(100) NOT NULL DEFAULT '',
             `address` varchar(255) DEFAULT NULL,
@@ -51,12 +51,12 @@ class Installer{
             `created_at` datetime NOT NULL,
             PRIMARY KEY (`id`)
           ) $charset_collate";
-  
-          if ( ! function_exists( 'dbDelta' ) ) {
-              require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-          }
-  
-          dbDelta( $schema );
-        
-    }
+
+		if ( ! function_exists( 'dbDelta' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+		}
+
+		  dbDelta( $schema );
+
+	}
 }

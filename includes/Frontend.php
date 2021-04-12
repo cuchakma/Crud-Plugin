@@ -5,9 +5,11 @@ namespace CC\CRUD;
 /**
  * Frontend Handler Class
  */
-class Frontend{
+class Frontend
+{
 
-    function __construct() {
+    function __construct()
+    {
         new Frontend\Shortcode();
     }
 }

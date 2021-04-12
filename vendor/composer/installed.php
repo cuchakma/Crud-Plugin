@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'e67f891d5f9d897b8cfdd41bf44802e55b2b1fe9',
+    'reference' => '45cf96030e288a278ce46fb8eeda99e862e3e50f',
     'name' => 'cupid/cc-crud',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'e67f891d5f9d897b8cfdd41bf44802e55b2b1fe9',
+      'reference' => '45cf96030e288a278ce46fb8eeda99e862e3e50f',
     ),
     'dealerdirect/phpcodesniffer-composer-installer' => 
     array (
