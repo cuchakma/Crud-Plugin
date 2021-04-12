@@ -11,6 +11,10 @@ class ComposerStaticInitdcad7d5aa2e259d3800548156563283a
     );
 
     public static $prefixLengthsPsr4 = array (
+        'D' => 
+        array (
+            'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 55,
+        ),
         'C' => 
         array (
             'CC\\CRUD\\' => 8,
@@ -18,6 +22,10 @@ class ComposerStaticInitdcad7d5aa2e259d3800548156563283a
     );
 
     public static $prefixDirsPsr4 = array (
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src',
+        ),
         'CC\\CRUD\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
@@ -26,12 +34,14 @@ class ComposerStaticInitdcad7d5aa2e259d3800548156563283a
 
     public static $classMap = array (
         'CC\\CRUD\\Admin' => __DIR__ . '/../..' . '/includes/Admin.php',
+        'CC\\CRUD\\Admin\\Address_List' => __DIR__ . '/../..' . '/includes/Admin/Address_List.php',
         'CC\\CRUD\\Admin\\Addressbook' => __DIR__ . '/../..' . '/includes/Admin/Addressbook.php',
         'CC\\CRUD\\Admin\\Menu' => __DIR__ . '/../..' . '/includes/Admin/Menu.php',
         'CC\\CRUD\\Frontend' => __DIR__ . '/../..' . '/includes/Frontend.php',
         'CC\\CRUD\\Frontend\\Shortcode' => __DIR__ . '/../..' . '/includes/Frontend/Shortcode.php',
         'CC\\CRUD\\Installer' => __DIR__ . '/../..' . '/includes/Installer.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin' => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src/Plugin.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

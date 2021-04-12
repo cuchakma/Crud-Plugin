@@ -24,89 +24,88 @@
 defined( 'ABSPATH' ) || die( 'No script kiddies please!' );
 
 
-require_once __DIR__ .'/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * The main plugin class
  */
+final class CC_CRUD {
 
-final class CC_CRUD{
-    
-    /**
-     * plugin version
-     * 
-     * @var string
-     */
-    const version = '1.0';
 
-    /**
-     * class constructor 
-     */
-    private function __construct() {
-        $this->define_constants();
-        register_activation_hook( __FILE__,  array( $this, 'activate' ) );
-        add_action( 'plugins_loaded', array( $this, 'init_plugin' ) );
-    }
+	/**
+	 * Plugin version
+	 *
+	 * @var string
+	 */
+	const version = '1.0';
 
-    /**
-     * initialize the singleton instance 
-     * 
-     * @return \CC_CRUD; 
-     */
+	/**
+	 * Class constructor
+	 */
+	private function __construct() {
+		$this->define_constants();
+		register_activation_hook( __FILE__, array( $this, 'activate' ) );
+		add_action( 'plugins_loaded', array( $this, 'init_plugin' ) );
+	}
 
-    public static function single(){
-        static $instance= false;
+	/**
+	 * Initialize the singleton instance
+	 *
+	 * @return \CC_CRUD;
+	 */
 
-        if( !$instance ) {
-            $instance = new self();
-        }
+	public static function single() {
+		static $instance = false;
 
-        return $instance;
-    }
+		if ( ! $instance ) {
+			$instance = new self();
+		}
 
-    public function define_constants() {
-        define( 'CC_CRUD_VERSION',  self::version );
-        define( 'CC_CRUD_FILE', __FILE__ );
-        define( 'CC_CRUD_PATH', __DIR__ );
-        define( 'CC_CRUD_URL', plugins_url('', CC_CRUD_FILE ) );
-        define( 'CC_CRUD_ASSETS',  CC_CRUD_URL . '/assets' );
-    }
+		return $instance;
+	}
 
-    /**
-     * Initialize the plugin
-     *
-     * @return void
-     */
-    public function init_plugin() {
-        if( is_admin() ) {
-            new CC\CRUD\Admin();
-        } else {
-            new \CC\CRUD\Frontend();
-        }
-        
-    }
+	public function define_constants() {
+		define( 'CC_CRUD_VERSION', self::version );
+		define( 'CC_CRUD_FILE', __FILE__ );
+		define( 'CC_CRUD_PATH', __DIR__ );
+		define( 'CC_CRUD_URL', plugins_url( '', CC_CRUD_FILE ) );
+		define( 'CC_CRUD_ASSETS', CC_CRUD_URL . '/assets' );
+	}
 
-    /**
-     * triggered when plugin is activated
-     *
-     * @return void
-     */
-    public function activate() {
-        $installer = new CC\CRUD\Installer();
-        $installer->run();
-    }
+	/**
+	 * Initialize the plugin
+	 *
+	 * @return void
+	 */
+	public function init_plugin() {
+		if ( is_admin() ) {
+			new CC\CRUD\Admin();
+		} else {
+			new \CC\CRUD\Frontend();
+		}
+	}
+
+	/**
+	 * Triggered when plugin is activated
+	 *
+	 * @return void
+	 */
+	public function activate() {
+		$installer = new CC\CRUD\Installer();
+		$installer->run();
+	}
 }
 
 /**
- * initializes the main plugin
- * 
+ * Initializes the main plugin
+ *
  * @return \CRUD
  */
-function cc_crud(){
-    return CC_CRUD::single();
+function cc_crud() {
+	return CC_CRUD::single();
 }
 
 /**
- * kickstart the plugin
+ * Kickstart the plugin
  */
 cc_crud();
