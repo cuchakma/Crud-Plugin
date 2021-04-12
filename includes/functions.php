@@ -130,7 +130,7 @@ function cc_delete_address( $id ) {
 	global $wpdb;
 
 	return $wpdb->delete(
-		$wpdb->pefix . 'cc_addresses',
+		$wpdb->prefix . 'cc_addresses',
 		array( 'id' => $id ),
 		array( '%d' )
 	);
