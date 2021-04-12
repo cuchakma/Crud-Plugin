@@ -1,6 +1,12 @@
 <div class="wrap">
 	<h1><?php _e( 'Edit Address', 'crud' ); ?></h1>
-	<?php error_log( print_r( $address, true ) ); ?>
+
+	<?php if ( isset( $_GET['address-updated'] ) ) : ?>
+		<div class="notice notice-success">
+			<p><?php _e( 'Address Has Been Updated Sucessfully', 'crud' ); ?></p>
+		</div>
+	<?php endif; ?>
+
 	<form action="" method="POST">
 		<table class="form-table">
 			<tbody>
@@ -36,7 +42,8 @@
 				</tr>
 			</tbody>
 		</table>
+		<input type="hidden" name="id" value="<?php echo esc_attr( $address->id ); ?>">
 		<?php wp_nonce_field( 'new-address' ); ?>
-		<?php submit_button( __( 'Add Address', 'crud' ), 'primary', 'submit_address' ); ?>
+		<?php submit_button( __( 'Update Address', 'crud' ), 'primary', 'submit_address' ); ?>
 	</form>
 </div>

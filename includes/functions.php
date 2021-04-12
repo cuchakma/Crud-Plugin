@@ -23,23 +23,45 @@ function cc_insert_address( $args = array() ) {
 
 	$data = wp_parse_args( $args, $defaults );
 
-	$inserted = $wpdb->insert(
-		"{$wpdb->prefix}cc_addresses",
-		$data,
-		array(
-			'%s',
-			'%s',
-			'%s',
-			'%d',
-			'%s',
-		)
-	);
+	if ( isset( $data['id'] ) ) {
+		$id = $data['id'];
+		unset( $data['id'] );
+		$updated = $wpdb->update(
+			"{$wpdb->prefix}cc_addresses",
+			$data,
+			array( 'id' => $id ),
+			array(
+				'%s',
+				'%s',
+				'%s',
+				'%d',
+				'%s',
+			),
+			array( '%d' )
+		);
 
-	if ( ! $inserted ) {
-		return new \WP_Error( 'failed-to-insert', __( 'Failed To Insert Data', 'crud' ) );
+		return $updated;
+	} else {
+
+		$inserted = $wpdb->insert(
+			"{$wpdb->prefix}cc_addresses",
+			$data,
+			array(
+				'%s',
+				'%s',
+				'%s',
+				'%d',
+				'%s',
+			)
+		);
+
+		if ( ! $inserted ) {
+			return new \WP_Error( 'failed-to-insert', __( 'Failed To Insert Data', 'crud' ) );
+		}
+
+		return $wpdb->insert_id;
+
 	}
-
-	return $wpdb->insert_id;
 }
 
 /**
@@ -93,7 +115,7 @@ function cc_fetch_address_count() {
  */
 function cc_get_address( $id ) {
 	global $wpdb;
-	
+
 	return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}cc_addresses where id= %d", $id ) );
 }
 

@@ -58,6 +58,7 @@ class Addressbook {
 			wp_die( 'Are You Cheating?' );
 		}
 
+		$id      = isset( $_POST['id'] ) ? intval( $_POST['id'] ) : 0;
 		$name    = isset( $_POST['name'] ) ? sanitize_text_field( $_POST['name'] ) : '';
 		$address = isset( $_POST['address'] ) ? sanitize_textarea_field( $_POST['address'] ) : '';
 		$phone   = isset( $_POST['phone'] ) ? sanitize_text_field( $_POST['phone'] ) : '';
@@ -74,18 +75,27 @@ class Addressbook {
 			return;
 		}
 
-		$insert_id = cc_insert_address(
-			array(
-				'name'    => $name,
-				'address' => $address,
-				'phone'   => $phone,
-			)
+		$args = array(
+			'name'    => $name,
+			'address' => $address,
+			'phone'   => $phone,
 		);
+
+		if ( $id ) {
+			$args['id'] = $id;
+		}
+
+		$insert_id = cc_insert_address( $args );
 
 		if ( is_wp_error( $insert_id ) ) {
 			wp_die( $insert_id->get_error_message() );
 		}
 
+		if ( $id ) {
+			$redirected_to = admin_url( 'admin.php?page=crud&action=edit&address-updated=true&id=' . $id );
+			wp_redirect( $redirected_to );
+			exit();
+		}
 		$redirected_to = admin_url( 'admin.php?page=crud&inserted=true' );
 		wp_redirect( $redirected_to );
 		exit();
