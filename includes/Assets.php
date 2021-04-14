@@ -30,7 +30,7 @@ class Assets {
 		);
 	}
 
-	public function equeue_assets() {
+	public function enqueue_assets() {
 
 		$scripts = $this->get_scripts();
 
