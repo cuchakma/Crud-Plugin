@@ -78,6 +78,9 @@ final class CC_CRUD {
 	 * @return void
 	 */
 	public function init_plugin() {
+
+		new CC\CRUD\Assets();
+
 		if ( is_admin() ) {
 			new CC\CRUD\Admin();
 		} else {
