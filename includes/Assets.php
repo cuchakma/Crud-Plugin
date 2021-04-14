@@ -8,7 +8,7 @@ namespace CC\CRUD;
 class Assets {
 
 	public function __construct() {
-		add_action( 'wp_enqueue_scripts', array( $this, 'equeue_assets' ), 10, 1 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ), 10, 1 );
 	}
 
 	public function get_scripts() {
