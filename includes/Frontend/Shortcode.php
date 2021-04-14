@@ -22,8 +22,8 @@ class Shortcode {
 	 * @return string
 	 */
 	public function render_shortcode( $atts, $content = '' ) {
-		wp_enqueue_script( 'cc-scripts' );
-		wp_enqueue_style( 'cc-styles' );
+		wp_enqueue_script( 'academy-script' );
+		wp_enqueue_style( 'academy-style' );
 		return '<div class="cc-shortcodes">Hello From Shortcode</div>';
 	}
 }
