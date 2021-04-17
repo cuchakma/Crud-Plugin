@@ -81,6 +81,10 @@ final class CC_CRUD {
 
 		new CC\CRUD\Assets();
 
+		if( defined('DOING_AJAX') && DOING_AJAX ){
+			new CC\CRUD\Ajax();
+		}
+
 		if ( is_admin() ) {
 			new CC\CRUD\Admin();
 		} else {
