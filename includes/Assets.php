@@ -77,13 +77,13 @@ class Assets {
 			wp_register_style( $handle, $style['src'], $deps, $style['version'] );
 		}
 
-		error_log(wp_localize_script(
+		wp_localize_script(
 			'academy-enquiry-script',
 			'cccrudobject',
 			array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
 				'error'   => __( 'Something Went Wrong', 'crud' ),
 			)
-		));
+		);
 	}
 }

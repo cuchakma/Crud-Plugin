@@ -12,6 +12,6 @@ class Ajax {
 	}
 
 	public function submit_enquiry() {
-		wp_send_json_success();
+		echo "1";
 	}
 }

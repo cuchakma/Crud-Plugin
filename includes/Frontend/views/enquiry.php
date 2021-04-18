@@ -1,6 +1,6 @@
-<div class="enquiry-form" id="enquiry-form">
+<div class="enquiry-form" id="">
 
-	<form action="" method="post">
+	<form action="" method="post" id="enquiry_form">
 
 		<div class="form-row">
 			<label for="name"><?php _e( 'Name', 'crud' ); ?></label>
