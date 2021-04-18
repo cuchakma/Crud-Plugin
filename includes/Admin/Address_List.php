@@ -58,7 +58,7 @@ class Address_List extends \WP_List_Table {
 
 		$actions           = array();
 		$actions['edit']   = sprintf( '<a href="%s" title="%s">%s</a>', admin_url( 'admin.php?page=crud&action=edit&id=' . $item->id ), $item->id, __( 'Edit', 'crud' ), __( 'Edit', 'crud' ) );
-		$actions['delete'] = sprintf( '<a href="%s" class="submitdelete" onclick="return confirm(\'Are you sure?\');" title="%s">%s</a>', wp_nonce_url( admin_url( 'admin-post.php?action=cc-delete-address&id=' . $item->id ), 'cc-delete-address' ), $item->id, __( 'Delete', 'crud' ), __( 'Delete', 'crud' ) );
+		$actions['delete'] = sprintf( '<a href="#" class="submitdelete" data-id="%s">%s</a>',  $item->id, __( 'Delete', 'crud' ) );
 		return sprintf(
 			'<a href="%1$s"><strong>%2$s</strong></a> %3$s',
 			admin_url( 'admin.php?page=crud&action=view&id' . $item->id ),

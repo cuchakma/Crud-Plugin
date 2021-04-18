@@ -33,7 +33,19 @@ class ComposerStaticInitdcad7d5aa2e259d3800548156563283a
     );
 
     public static $classMap = array (
+        'CC\\CRUD\\Admin' => __DIR__ . '/../..' . '/includes/Admin.php',
+        'CC\\CRUD\\Admin\\Address_List' => __DIR__ . '/../..' . '/includes/Admin/Address_List.php',
+        'CC\\CRUD\\Admin\\Addressbook' => __DIR__ . '/../..' . '/includes/Admin/Addressbook.php',
+        'CC\\CRUD\\Admin\\Menu' => __DIR__ . '/../..' . '/includes/Admin/Menu.php',
+        'CC\\CRUD\\Ajax' => __DIR__ . '/../..' . '/includes/Ajax.php',
+        'CC\\CRUD\\Assets' => __DIR__ . '/../..' . '/includes/Assets.php',
+        'CC\\CRUD\\Frontend' => __DIR__ . '/../..' . '/includes/Frontend.php',
+        'CC\\CRUD\\Frontend\\Enquiry' => __DIR__ . '/../..' . '/includes/Frontend/Enquiry.php',
+        'CC\\CRUD\\Frontend\\Shortcode' => __DIR__ . '/../..' . '/includes/Frontend/Shortcode.php',
+        'CC\\CRUD\\Installer' => __DIR__ . '/../..' . '/includes/Installer.php',
+        'CC\\CRUD\\Traits\\Form_Error' => __DIR__ . '/../..' . '/includes/Traits/Form_Error.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin' => __DIR__ . '/..' . '/dealerdirect/phpcodesniffer-composer-installer/src/Plugin.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

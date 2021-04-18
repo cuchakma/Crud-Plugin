@@ -10,8 +10,10 @@ use function cli\err;
 class Ajax {
 
 	public function __construct() {
-		
+
+		add_action( 'wp_ajax_cc_enquiry', array( $this, 'submit_enquiry' ) );
 		add_action( 'wp_ajax_nopriv_cc_enquiry', array( $this, 'submit_enquiry' ) );
+		add_action( 'wp_ajax_nopriv_cc-delete-contact', array( $this, 'delete_contact') );
 
 	}
 
@@ -23,5 +25,9 @@ class Ajax {
 			]);
 		}
 
+	}
+
+	public function delete_contact() {
+		wp_send_json_success();
 	}
 }

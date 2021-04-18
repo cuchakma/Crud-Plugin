@@ -32,6 +32,11 @@ class Assets {
 				'version' => filemtime( CC_CRUD_PATH . '/assets/js/enquiry.js' ),
 				'deps'    => array( 'jquery' )
 			),
+			'academy-admin-script' => array(
+				'src'     => CC_CRUD_ASSETS . '/js/admin.js',
+				'version' => filemtime( CC_CRUD_PATH . '/assets/js/enquiry.js' ),
+				'deps'    => array( 'jquery', 'wp-util' )
+			),
 		);
 	}
 
@@ -83,6 +88,16 @@ class Assets {
 			'cccrudobject',
 			array(
 				'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				'error'   => __( 'Something Went Wrong', 'crud' ),
+			)
+		);
+
+		wp_localize_script(
+			'academy-admin-script',
+			'cccrudobject2',
+			array(
+				'nonce'   => wp_create_nonce('cc-admin-nonce'),
+				'confirm' => __('Are You Sure?', 'crud'),
 				'error'   => __( 'Something Went Wrong', 'crud' ),
 			)
 		);
