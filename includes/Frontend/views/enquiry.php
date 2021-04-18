@@ -1,6 +1,6 @@
-<div class="enquiry-form" id="">
+<div class="enquiry-form" id="enquiry_form">
 
-	<form action="" method="post" id="enquiry_form">
+	<form action="" method="post">
 
 		<div class="form-row">
 			<label for="name"><?php _e( 'Name', 'crud' ); ?></label>
@@ -18,8 +18,9 @@
 		</div>
 
 		<div class="form-row">
+
 			<?php wp_nonce_field( 'cc-enquiry-form' ); ?>
-				<input type="hidden" name="action" value="cc_enquiry">
+			<input type="hidden" name="action" value="cc_enquiry">
 			<input type="submit" name="send_enquiry" value="<?php esc_attr_e( 'Send Enquiry', 'crud' ); ?>">
 		</div>
 	</form>

@@ -10,7 +10,6 @@
  * Domain Path: /languages
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
- *
  * @package     CRUD PLUGIN
  * @author      Cupid Chakma
  * @copyright   2020 D&D
@@ -81,7 +80,7 @@ final class CC_CRUD {
 
 		new CC\CRUD\Assets();
 
-		if( defined('DOING_AJAX') && DOING_AJAX ){
+		if( defined('DOING_AJAX') && DOING_AJAX  ){
 			new CC\CRUD\Ajax();
 		}
 

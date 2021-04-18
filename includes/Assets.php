@@ -25,11 +25,12 @@ class Assets {
 			'academy-script'         => array(
 				'src'     => CC_CRUD_ASSETS . '/js/frontend.js',
 				'version' => filemtime( CC_CRUD_PATH . '/assets/js/frontend.js' ),
-				'deps'    => array( 'jquery' ),
+				'deps'    => array( 'jquery' )
 			),
 			'academy-enquiry-script' => array(
 				'src'     => CC_CRUD_ASSETS . '/js/enquiry.js',
 				'version' => filemtime( CC_CRUD_PATH . '/assets/js/enquiry.js' ),
+				'deps'    => array( 'jquery' )
 			),
 		);
 	}

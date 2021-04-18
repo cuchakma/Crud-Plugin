@@ -2,16 +2,26 @@
 
 namespace CC\CRUD;
 
+use function cli\err;
+
 /**
  * Ajax class handler
  */
 class Ajax {
 
 	public function __construct() {
+		
 		add_action( 'wp_ajax_nopriv_cc_enquiry', array( $this, 'submit_enquiry' ) );
+
 	}
 
 	public function submit_enquiry() {
-		echo "1";
+
+		if( !wp_verify_nonce( $_REQUEST['_wpnonce'], 'cc-enquiry-form' ) ) {
+			wp_send_json_error([
+				'message' => 'Nonce Verification Failed'
+			]);
+		}
+
 	}
 }
